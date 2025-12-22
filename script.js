@@ -4,19 +4,19 @@
 
 const projectsData = {
     1: {
-        title: "Residencia Moderna en Quito",
-        category: "Diseño Residencial",
-        year: "2023",
-        location: "Quito, Ecuador",
-        area: "380 m²",
-        description: "Una residencia contemporánea ubicada en el sector norte de Quito, diseñada para una familia de 4 miembros. El proyecto incorpora principios de diseño bioclimático aprovechando la orientación solar y la ventilación natural para reducir consumo energético. Se utilizaron materiales locales sostenibles y se implementó un sistema de recolección de agua lluvia. El diseño contempla espacios abiertos que se adaptan a diferentes funciones, con énfasis en la conexión interior-exterior a través de amplios ventanales.",
+        title: "CERVECERÍA Cumbayá",
+        category: "Concepto Raumplan",
+        year: "2025",
+        location: "Cumbayá, Ecuador",
+        area: "Proyecto Académico",
+        description: "El programa a realizar es una cervecería el cual se desarrolla partir del concepto Raumplan, en los cuales se utilizan tres principios: diferencia de alturas, planta espacial y revestimiento.\n\nEl concepto de Raumplan que tiene Loos es que cada espacio que se necesita en la construccion debe tener una altura particular es decir que si es un espacio en el cual va estar muy concurrido por muchas personas, la altura debe tener una dimension bastante considerable, y si no habra muchas personas la dimension disminuye. En el caso del proyecto las areas administrativas son de menor dimension que el restaurante.",
         features: [
-            "✓ Diseño bioclimático optimizado",
-            "✓ Sistema de agua reciclada",
-            "✓ Materiales sostenibles locales",
-            "✓ Espacios multifuncionales",
-            "✓ Iluminación natural maximizada",
-            "✓ Área verde integrada"
+            "✓ Diferencia de alturas (Raumplan)",
+            "✓ Planta espacial articulada",
+            "✓ Revestimiento diferenciado por zonas",
+            "✓ Área administrativa compacta",
+            "✓ Restaurante con doble altura",
+            "✓ Circulación funcional optimizada"
         ],
         images: [
             "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop",
@@ -25,19 +25,19 @@ const projectsData = {
         ]
     },
     2: {
-        title: "Centro Comercial",
-        category: "Diseño Comercial",
-        year: "2022",
-        location: "Barcelona, España",
-        area: "12,500 m²",
-        description: "Un centro comercial innovador que redefinió la experiencia de compra en la ciudad. El diseño integra espacios comerciales, de entretenimiento y de ocio, creando un ecosistema urbano sostenible. La arquitectura permite una circulación natural y maximiza la experiencia del visitante.",
+        title: "VIVIENDA MULTIFAMILIAR Iñaquito",
+        category: "Composición Urbana",
+        year: "2025",
+        location: "Iñaquito, Ecuador",
+        area: "Proyecto Académico",
+        description: "El programa a realizar es una vivienda multifamiliar, nace desde composición de planos, masas, tomando como guias directrices del contexto: ejes de edificaciones aledañas, ejes en alturas, ejes visuales, ejes de hitos.\n\nESTRATEGIAS DE DISEÑO:\nAsoleamiento - Directrices de contexto con ejes de edificaciones, ejes en alturas.",
         features: [
-            "✓ 4 niveles de comercio",
-            "✓ Espacios verdes integrados",
-            "✓ Techumbre con vidrio ecológico",
-            "✓ Sistema de climatización eficiente",
-            "✓ Accesibilidad total",
-            "✓ Estacionamiento subterráneo"
+            "✓ Análisis de directrices contextuales",
+            "✓ Ejes de edificaciones aledañas",
+            "✓ Ejes en alturas definidos",
+            "✓ Ejes visuales estratégicos",
+            "✓ Optimización de asoleamiento",
+            "✓ Integración urbana coherente"
         ],
         images: [
             "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=600&fit=crop",
@@ -46,19 +46,19 @@ const projectsData = {
         ]
     },
     3: {
-        title: "Oficinas Ecológicas",
-        category: "Diseño Corporativo",
-        year: "2023",
-        location: "Valencia, España",
-        area: "8,200 m²",
-        description: "Un edificio corporativo que establece nuevos estándares en sostenibilidad ambiental. Con certificación LEED Gold, este proyecto demuestra que la eficiencia energética y el diseño elegante pueden coexistir. Los espacios de trabajo están diseñados para maximizar la productividad y el bienestar de los empleados.",
+        title: "VIVIENDA UNIFAMILIAR-RAUMPLAN Mindo",
+        category: "Transformación Espacial",
+        year: "2025",
+        location: "Mindo, Ecuador",
+        area: "Proyecto Académico",
+        description: "El programa a realizar es una vivienda unifamiliar donde se utiliza el concepto Raumplan el cual consiste en la transformacion de la Casa Pitaya. La exploración espacial se la busca en movimientos en corte, como la escalera que es una articuladora espacial, ya que con este medio se puede aproximar a un Raumplan por el juego de alturas que conlleva y esta relación de espacios.",
         features: [
-            "✓ Certificación LEED Gold",
-            "✓ Panel solar en azotea",
-            "✓ Sistemas de recolección de agua",
-            "✓ Zonas verdes internas",
-            "✓ Espacios colaborativos modernos",
-            "✓ Estacionamiento para bicicletas"
+            "✓ Concepto Raumplan aplicado",
+            "✓ Transformación de Casa Pitaya",
+            "✓ Escalera como articulador espacial",
+            "✓ Juego de alturas estratégico",
+            "✓ Movimientos en corte definidos",
+            "✓ Relación espacial jerarquizada"
         ],
         images: [
             "https://images.unsplash.com/photo-1494145904049-0dca7b3c8d0f?w=800&h=600&fit=crop",
@@ -67,19 +67,19 @@ const projectsData = {
         ]
     },
     4: {
-        title: "Restaurante Boutique",
-        category: "Diseño Gastronómico",
-        year: "2022",
-        location: "Sevilla, España",
-        area: "350 m²",
-        description: "Un espacio gastronómico que fusiona elementos industriales con calidez natural. El diseño inteligente permite múltiples configuraciones para diferentes servicios, desde íntimo hasta festivo. La conexión con el exterior a través de ventanales amplios convierte la experiencia culinaria en un ritual completo.",
+        title: "CENTRO DE SALUD MATERNO INFANTIL Nayón",
+        category: "Equipamiento de Salud",
+        year: "2025",
+        location: "Nayón, Ecuador",
+        area: "Proyecto Académico",
+        description: "Partiendo del vacío estructurante se plantea un concepto para este proyecto el cual es tensión entre masas. El proyecto que se propone es un centro de salud materno infantil esto luego de una análisis en que necesidades comprende en este radio de manzana.",
         features: [
-            "✓ Cocina abierta visible",
-            "✓ Elementos de madera maciza",
-            "✓ Iluminación variable",
-            "✓ Acústica profesional",
-            "✓ Barra de chef interactiva",
-            "✓ Zona de bodega integrada"
+            "✓ Concepto de tensión entre masas",
+            "✓ Vacío estructurante central",
+            "✓ Análisis de necesidades comunitarias",
+            "✓ Funciones materno-infantiles integradas",
+            "✓ Espacios terapéuticos bien definidos",
+            "✓ Circulación clara y accesible"
         ],
         images: [
             "https://images.unsplash.com/photo-1585399363732-b8a5ebaa6e2f?w=800&h=600&fit=crop",
@@ -88,45 +88,24 @@ const projectsData = {
         ]
     },
     5: {
-        title: "Complejo Residencial",
-        category: "Urbanismo",
-        year: "2021",
-        location: "Málaga, España",
-        area: "45,000 m²",
-        description: "Un desarrollo urbanístico integral que reimagina la vida en comunidad. El proyecto incluye viviendas de diversos tipos, espacios verdes amplios, y áreas comerciales, creando un barrio autosuficiente y sostenible. La circulación está pensada para peatones y ciclistas.",
+        title: "VIVIENDA UNIFAMILIAR - PLANTA LIBRE Mindo",
+        category: "Concepto Le Corbusier",
+        year: "2025",
+        location: "Mindo, Ecuador",
+        area: "Proyecto Académico",
+        description: "El programa a realizar es una vivienda unifamiliar donde se utiliza el concepto de Planta Libre. Casa Pitaya resulta a una transformación a PLAN LIBRE porque se incluye el uso de fachada libre, una circulación en diagonal a 45 grados y también una independización de sistemas.",
         features: [
-            "✓ 250 viviendas variadas",
-            "✓ 8 hectáreas de áreas verdes",
-            "✓ Ciclovía completa",
-            "✓ Centro comercial integrado",
-            "✓ Equipamientos educativos",
-            "✓ Energías renovables compartidas"
+            "✓ Planta libre (Le Corbusier)",
+            "✓ Fachada libre independiente",
+            "✓ Circulación diagonal a 45°",
+            "✓ Sistemas estructurales independientes",
+            "✓ Flexibilidad espacial interior",
+            "✓ Transformación de Casa Pitaya"
         ],
         images: [
             "https://images.unsplash.com/photo-1512784124950-14f1b6f768c8?w=800&h=600&fit=crop",
             "https://images.unsplash.com/photo-1512706996645-f83c25cb79b9?w=800&h=600&fit=crop",
             "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
-        ]
-    },
-    6: {
-        title: "Biblioteca Pública",
-        category: "Equipamiento Público",
-        year: "2023",
-        location: "Bilbao, España",
-        area: "5,800 m²",
-        description: "Un centro de conocimiento que combina accesibilidad, inclusión y modernidad. La biblioteca está diseñada para todos, con espacios flexibles que se adaptan a diferentes necesidades y actividades. La arquitectura promueve el aprendizaje colaborativo y la exploración del conocimiento.",
-        features: [
-            "✓ 4 plantas funcionales",
-            "✓ Acceso sin barreras",
-            "✓ Sala de multimedia",
-            "✓ Espacios de lectura variados",
-            "✓ Zonas de estudio colaborativo",
-            "✓ Auditorio integrado"
-        ],
-        images: [
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1507842217343-583f20270319?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1507842217343-583f20270319?w=800&h=600&fit=crop"
         ]
     }
 };
