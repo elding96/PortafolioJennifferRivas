@@ -1,0 +1,300 @@
+/* ============================================
+   ANIMACIONES PERSONALIZADAS
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDelay {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Clases de utilidad para animaciones */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.animate-slide-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================
+   ESTILOS PERSONALIZADOS
+   ============================================ */
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efecto hover mejorado en botones */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Efecto en las tarjetas de CV */
+.bg-rose-50 {
+    transition: all 0.3s ease;
+}
+
+/* Mejora de transiciones generales */
+* {
+    transition-property: color, background-color, border-color, transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efecto especial en textos */
+.font-display {
+    letter-spacing: -0.02em;
+}
+
+/* Estilos para el modal */
+#projectModal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+#projectModal.hidden {
+    display: none !important;
+}
+
+/* Gradient de fondo responsivo */
+@media (max-width: 768px) {
+    .grid {
+        gap: 1rem;
+    }
+}
+
+/* Mejora visual de navegación */
+nav a {
+    position: relative;
+    display: inline-block;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #f472b6;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Efecto de sombra mejorada */
+.shadow-lg {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de carga */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Galería de imágenes del modal */
+.modal-image-gallery {
+    position: relative;
+}
+
+/* Mejora de enfoque en inputs */
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.1);
+}
+
+/* Estilos específicos para mobile */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Efecto de zoom en hover para imágenes */
+.group img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transición suave en cambios de color */
+.text-rose-400 {
+    transition: color 0.3s ease;
+}
+
+/* Estilo de barra de progreso mejorado */
+.h-2 {
+    background-size: 20px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de parallax ligero */
+@supports (background-attachment: fixed) {
+    section {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+/* Mejora de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Estilos para formulario */
+form input,
+form textarea {
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+/* Efecto de botón con onda */
+.btn-wave {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sombra mejorada para elementos flotantes */
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(244, 114, 182, 0.15);
+}
