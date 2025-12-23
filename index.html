@@ -523,19 +523,14 @@
 
     <script src="script.js"></script>
     <script>
-        // Corregir rutas de imágenes de preview en GitHub Pages
+        // Después de que script.js se cargue, corregir las rutas de imágenes
         document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img[src^="Fotos/"]');
-            images.forEach(img => {
-                if (typeof BASE_PATH !== 'undefined') {
-                    img.src = BASE_PATH + img.src;
-                }
-            });
-            
-            // También corregir la foto de perfil si es necesario
-            const profileImg = document.querySelector('img[src="profile.jpg"]');
-            if (profileImg && typeof BASE_PATH !== 'undefined') {
-                profileImg.src = BASE_PATH + profileImg.src;
+            // Solo corregir si estamos en GitHub Pages (BASE_PATH tiene valor)
+            if (typeof BASE_PATH !== 'undefined' && BASE_PATH) {
+                const images = document.querySelectorAll('img[src^="Fotos/"]');
+                images.forEach(img => {
+                    img.src = BASE_PATH + '/' + img.src;
+                });
             }
         });
     </script>

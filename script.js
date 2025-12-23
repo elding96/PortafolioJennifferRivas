@@ -8,7 +8,7 @@ const getBasePath = () => {
     
     // Si está en localhost o 127.0.0.1, usar raíz
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        return '/';
+        return '';
     }
     
     // Si está en GitHub Pages, extraer el nombre del repositorio
@@ -17,18 +17,23 @@ const getBasePath = () => {
     
     // Si la primera parte no es un archivo, es probablemente el nombre del repo
     if (parts.length > 0 && !parts[0].includes('.')) {
-        return '/' + parts[0] + '/';
+        return '/' + parts[0];
     }
     
     // Por defecto, usar raíz
-    return '/';
+    return '';
 };
 
 const BASE_PATH = getBasePath();
 
 // Función para obtener la ruta completa de una imagen
 const getImagePath = (imagePath) => {
-    return BASE_PATH + imagePath;
+    // Si BASE_PATH está vacío (localhost), devolver la ruta como está
+    if (!BASE_PATH) {
+        return imagePath;
+    }
+    // Si BASE_PATH tiene valor (GitHub), prepender a la ruta
+    return BASE_PATH + '/' + imagePath;
 };
 
 // ============================================
