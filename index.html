@@ -14,6 +14,14 @@
                 window.BASE_PATH = '/' + parts[0];
             }
         }
+        
+        // Función para ajustar rutas ANTES de que se carguen
+        window.getImagePath = function(imagePath) {
+            if (!window.BASE_PATH) {
+                return imagePath;
+            }
+            return window.BASE_PATH + '/' + imagePath;
+        };
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -534,12 +542,19 @@
 
     <script src="script.js"></script>
     <script>
-        // Corregir las rutas de las imágenes usando el BASE_PATH definido en el head
+        // Corregir las rutas de las imágenes después de que el DOM esté cargado
+        // pero con un pequeño delay para evitar conflictos
         if (window.BASE_PATH) {
-            const images = document.querySelectorAll('img[src^="Fotos/"]');
-            images.forEach(img => {
-                img.src = window.BASE_PATH + '/' + img.src;
-            });
+            setTimeout(function() {
+                const images = document.querySelectorAll('img[src^="Fotos/"]');
+                images.forEach(img => {
+                    const originalSrc = img.src;
+                    // Solo corregir si no ya tiene el BASE_PATH
+                    if (!originalSrc.includes(window.BASE_PATH)) {
+                        img.src = window.BASE_PATH + '/' + originalSrc;
+                    }
+                });
+            }, 100);
         }
     </script>
 </body>
