@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio - Jenniffer Rivas</title>
+    <script>
+        // Detectar BASE_PATH INMEDIATAMENTE antes de cargar imágenes
+        window.BASE_PATH = '';
+        const pathname = window.location.pathname;
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            const parts = pathname.split('/').filter(p => p);
+            if (parts.length > 0 && !parts[0].includes('.')) {
+                window.BASE_PATH = '/' + parts[0];
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -523,16 +534,13 @@
 
     <script src="script.js"></script>
     <script>
-        // Después de que script.js se cargue, corregir las rutas de imágenes
-        document.addEventListener('DOMContentLoaded', function() {
-            // Solo corregir si estamos en GitHub Pages (BASE_PATH tiene valor)
-            if (typeof BASE_PATH !== 'undefined' && BASE_PATH) {
-                const images = document.querySelectorAll('img[src^="Fotos/"]');
-                images.forEach(img => {
-                    img.src = BASE_PATH + '/' + img.src;
-                });
-            }
-        });
+        // Corregir las rutas de las imágenes usando el BASE_PATH definido en el head
+        if (window.BASE_PATH) {
+            const images = document.querySelectorAll('img[src^="Fotos/"]');
+            images.forEach(img => {
+                img.src = window.BASE_PATH + '/' + img.src;
+            });
+        }
     </script>
 </body>
 </html>
