@@ -1,4 +1,37 @@
 // ============================================
+// DETECCIÓN DE RUTA BASE PARA GITHUB PAGES
+// ============================================
+
+// Detectar la ruta base automáticamente
+const getBasePath = () => {
+    const pathname = window.location.pathname;
+    
+    // Si está en localhost o 127.0.0.1, usar raíz
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return '/';
+    }
+    
+    // Si está en GitHub Pages, extraer el nombre del repositorio
+    // El pathname será: /nombre-repo/ o /nombre-repo/index.html
+    const parts = pathname.split('/').filter(p => p);
+    
+    // Si la primera parte no es un archivo, es probablemente el nombre del repo
+    if (parts.length > 0 && !parts[0].includes('.')) {
+        return '/' + parts[0] + '/';
+    }
+    
+    // Por defecto, usar raíz
+    return '/';
+};
+
+const BASE_PATH = getBasePath();
+
+// Función para obtener la ruta completa de una imagen
+const getImagePath = (imagePath) => {
+    return BASE_PATH + imagePath;
+};
+
+// ============================================
 // DATOS DE LOS PROYECTOS
 // ============================================
 
@@ -138,7 +171,8 @@ function openProjectModal(projectId) {
     document.getElementById('modalLocation').textContent = project.location;
     document.getElementById('modalArea').textContent = project.area;
     document.getElementById('modalDescription').textContent = project.description;
-    document.getElementById('modalImage').src = project.images[0];
+    // Usar la ruta correcta con BASE_PATH
+    document.getElementById('modalImage').src = getImagePath(project.images[0]);
     
     // Actualizar características
     const featuresContainer = document.getElementById('modalFeatures');
@@ -177,7 +211,7 @@ function changeImage(direction) {
     }
     
     // Precargar la imagen antes de mostrar
-    const newImageSrc = project.images[currentImageIndex];
+    const newImageSrc = getImagePath(project.images[currentImageIndex]);
     const modalImage = document.getElementById('modalImage');
     
     // Crear una imagen temporal para precargar
@@ -376,7 +410,8 @@ function openImageZoom(imageSrc) {
     const zoomModal = document.getElementById('imageZoomModal');
     const zoomImage = document.getElementById('zoomImage');
     
-    zoomImage.src = imageSrc;
+    // Usar la ruta correcta con BASE_PATH
+    zoomImage.src = getImagePath(imageSrc);
     zoomModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     
@@ -409,7 +444,7 @@ function changeZoomImage(direction) {
     
     // Cambiar imagen con transición
     const zoomImage = document.getElementById('zoomImage');
-    const newImageSrc = project.images[currentImageIndex];
+    const newImageSrc = getImagePath(project.images[currentImageIndex]);
     
     zoomImage.style.opacity = '0.7';
     

@@ -522,5 +522,22 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Corregir rutas de imágenes de preview en GitHub Pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[src^="Fotos/"]');
+            images.forEach(img => {
+                if (typeof BASE_PATH !== 'undefined') {
+                    img.src = BASE_PATH + img.src;
+                }
+            });
+            
+            // También corregir la foto de perfil si es necesario
+            const profileImg = document.querySelector('img[src="profile.jpg"]');
+            if (profileImg && typeof BASE_PATH !== 'undefined') {
+                profileImg.src = BASE_PATH + profileImg.src;
+            }
+        });
+    </script>
 </body>
 </html>
