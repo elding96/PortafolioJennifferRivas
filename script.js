@@ -19,9 +19,10 @@ const projectsData = {
             "✓ Circulación funcional optimizada"
         ],
         images: [
-            "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop"
+            "Fotos/Proyecto 01/PARTE 1_00001.jpg",
+            "Fotos/Proyecto 01/PARTE 1_00002.jpg",
+            "Fotos/Proyecto 01/PARTE 1_00003.jpg",
+            "Fotos/Proyecto 01/PARTE 1_00004.jpg"
         ]
     },
     2: {
@@ -40,9 +41,10 @@ const projectsData = {
             "✓ Integración urbana coherente"
         ],
         images: [
-            "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1441986300352-7e3dee05a6c6?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1431976567832-87d3ced3f13f?w=800&h=600&fit=crop"
+            "Fotos/Proyecto 02/PARTE 2_00001.jpg",
+            "Fotos/Proyecto 02/PARTE 2_00002.jpg",
+            "Fotos/Proyecto 02/PARTE 2_00003.jpg",
+            "Fotos/Proyecto 02/PARTE 2_00004.jpg"
         ]
     },
     3: {
@@ -61,9 +63,9 @@ const projectsData = {
             "✓ Relación espacial jerarquizada"
         ],
         images: [
-            "https://images.unsplash.com/photo-1494145904049-0dca7b3c8d0f?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop"
+            "Fotos/Proyecto 03/PARTE 3_00001.jpg",
+            "Fotos/Proyecto 03/PARTE 3_00002.jpg",
+            "Fotos/Proyecto 03/PARTE 3_00003.jpg"
         ]
     },
     4: {
@@ -82,9 +84,9 @@ const projectsData = {
             "✓ Circulación clara y accesible"
         ],
         images: [
-            "https://images.unsplash.com/photo-1585399363732-b8a5ebaa6e2f?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1537457866556-6b4f65ba0275?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop"
+            "Fotos/Proyecto 04/PARTE 4_00001.jpg",
+            "Fotos/Proyecto 04/PARTE 4_00002.jpg",
+            "Fotos/Proyecto 04/PARTE 4_00003.jpg"
         ]
     },
     5: {
@@ -103,9 +105,9 @@ const projectsData = {
             "✓ Transformación de Casa Pitaya"
         ],
         images: [
-            "https://images.unsplash.com/photo-1512784124950-14f1b6f768c8?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1512706996645-f83c25cb79b9?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop"
+            "Fotos/Proyecto 05/PARTE 5pdf_00001.jpg",
+            "Fotos/Proyecto 05/PARTE 5pdf_00002.jpg",
+            "Fotos/Proyecto 05/PARTE 5pdf_00003.jpg"
         ]
     }
 };
@@ -144,6 +146,9 @@ function openProjectModal(projectId) {
         .map(feature => `<li class="flex items-center text-gray-700"><span class="text-rose-400 font-bold mr-3">•</span>${feature}</li>`)
         .join('');
     
+    // Actualizar contador de imágenes
+    document.getElementById('imageCounter').textContent = `1 / ${project.images.length}`;
+    
     // Mostrar modal
     const modal = document.getElementById('projectModal');
     modal.classList.remove('hidden');
@@ -171,14 +176,26 @@ function changeImage(direction) {
         currentImageIndex = (currentImageIndex - 1 + imageCount) % imageCount;
     }
     
-    // Animación de cambio
+    // Precargar la imagen antes de mostrar
+    const newImageSrc = project.images[currentImageIndex];
     const modalImage = document.getElementById('modalImage');
-    modalImage.style.opacity = '0.5';
     
-    setTimeout(() => {
-        modalImage.src = project.images[currentImageIndex];
-        modalImage.style.opacity = '1';
-    }, 150);
+    // Crear una imagen temporal para precargar
+    const tempImg = new Image();
+    tempImg.onload = function() {
+        // Animación de cambio suave
+        modalImage.style.opacity = '0.7';
+        
+        setTimeout(() => {
+            modalImage.src = newImageSrc;
+            modalImage.style.opacity = '1';
+            
+            // Actualizar contador
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${imageCount}`;
+        }, 100);
+    };
+    
+    tempImg.src = newImageSrc;
 }
 
 // Función para solicitar información de un proyecto
@@ -301,8 +318,109 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalImage = document.getElementById('modalImage');
     if (modalImage) {
         modalImage.style.transition = 'opacity 0.3s ease';
+        // Click en imagen para zoom
+        modalImage.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (currentProject) {
+                const project = projectsData[currentProject];
+                openImageZoom(project.images[currentImageIndex]);
+            }
+        });
+        // Cursor de zoom
+        modalImage.style.cursor = 'zoom-in';
     }
+    
+    // Botones del modal de zoom
+    const closeZoomBtn = document.getElementById('closeZoomModal');
+    if (closeZoomBtn) {
+        closeZoomBtn.addEventListener('click', closeImageZoom);
+    }
+    
+    const zoomNextBtn = document.getElementById('zoomNextImage');
+    if (zoomNextBtn) {
+        zoomNextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            changeZoomImage('next');
+        });
+    }
+    
+    const zoomPrevBtn = document.getElementById('zoomPrevImage');
+    if (zoomPrevBtn) {
+        zoomPrevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            changeZoomImage('prev');
+        });
+    }
+    
+    // Cerrar zoom con Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !document.getElementById('imageZoomModal').classList.contains('hidden')) {
+            closeImageZoom();
+        }
+    });
+    
+    // Cerrar zoom clickeando en la imagen o fuera
+    document.getElementById('imageZoomModal').addEventListener('click', function(e) {
+        if (e.target === this || e.target.id === 'zoomImage') {
+            closeImageZoom();
+        }
+    });
 });
+
+// ============================================
+// FUNCIONES DE ZOOM DE IMAGEN
+// ============================================
+
+// Función para abrir modal de zoom
+function openImageZoom(imageSrc) {
+    const zoomModal = document.getElementById('imageZoomModal');
+    const zoomImage = document.getElementById('zoomImage');
+    
+    zoomImage.src = imageSrc;
+    zoomModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Actualizar contador si es necesario
+    if (currentProject) {
+        const project = projectsData[currentProject];
+        document.getElementById('zoomImageCounter').textContent = `${currentImageIndex + 1} / ${project.images.length}`;
+    }
+}
+
+// Función para cerrar modal de zoom
+function closeImageZoom() {
+    const zoomModal = document.getElementById('imageZoomModal');
+    zoomModal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+// Función para cambiar imagen en zoom
+function changeZoomImage(direction) {
+    if (!currentProject) return;
+    
+    const project = projectsData[currentProject];
+    const imageCount = project.images.length;
+    
+    if (direction === 'next') {
+        currentImageIndex = (currentImageIndex + 1) % imageCount;
+    } else if (direction === 'prev') {
+        currentImageIndex = (currentImageIndex - 1 + imageCount) % imageCount;
+    }
+    
+    // Cambiar imagen con transición
+    const zoomImage = document.getElementById('zoomImage');
+    const newImageSrc = project.images[currentImageIndex];
+    
+    zoomImage.style.opacity = '0.7';
+    
+    setTimeout(() => {
+        zoomImage.src = newImageSrc;
+        zoomImage.style.opacity = '1';
+        
+        // Actualizar contador
+        document.getElementById('zoomImageCounter').textContent = `${currentImageIndex + 1} / ${imageCount}`;
+    }, 150);
+}
 
 // ============================================
 // FUNCIONES ADICIONALES
