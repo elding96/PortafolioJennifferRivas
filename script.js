@@ -264,16 +264,58 @@ function requestProjectInfo() {
 }
 
 // ============================================
-// EVENT LISTENERS
+// FUNCIONES DE RENDERIZADO
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Botones de proyectos
+// Función para renderizar las tarjetas de proyectos dinámicamente
+function renderProjectsGrid() {
+    const grid = document.getElementById('projectsGrid');
+    if (!grid) return;
+    
+    const animations = ['animate-fade-in', 'animate-fade-in-delay', 'animate-fade-in-delay-2', 'animate-fade-in', 'animate-fade-in-delay'];
+    
+    grid.innerHTML = Object.entries(projectsData).map(([id, project], index) => `
+        <div class="group cursor-pointer ${animations[index]}" data-project="${id}">
+            <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
+                <img 
+                    src="${getImagePath(project.images[0])}" 
+                    alt="${project.title}" 
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    loading="lazy"
+                >
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
+                    <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
+                        Ver Detalles
+                    </button>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">${project.title}</h3>
+            <p class="text-gray-600">${project.category}</p>
+        </div>
+    `).join('');
+    
+    // Re-agregar event listeners a los nuevos elementos
+    attachProjectClickHandlers();
+}
+
+// Función para agregar event listeners a las tarjetas de proyectos
+function attachProjectClickHandlers() {
     document.querySelectorAll('[data-project]').forEach(element => {
         element.addEventListener('click', function() {
             openProjectModal(this.getAttribute('data-project'));
         });
     });
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Renderizar las tarjetas de proyectos dinámicamente
+    renderProjectsGrid();
+    
+    // Nota: Los event listeners de proyectos ya están agregados en renderProjectsGrid()
     
     // Botones de cerrar modal
     document.getElementById('closeModal').addEventListener('click', closeProjectModal);

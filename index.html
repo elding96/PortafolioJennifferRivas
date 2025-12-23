@@ -286,76 +286,8 @@
                 Mis <span class="text-rose-400">Proyectos</span>
             </h2>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Proyecto 1 -->
-                <div class="group cursor-pointer animate-fade-in" data-project="1">
-                    <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
-                        <img src="Fotos/Proyecto 01/PARTE 1_00001.jpg" alt="CERVECERÍA Cumbayá" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                            <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">CERVECERÍA Cumbayá</h3>
-                    <p class="text-gray-600">Proyecto desarrollado con el concepto Raumplan de Loos</p>
-                </div>
-
-                <!-- Proyecto 2 -->
-                <div class="group cursor-pointer animate-fade-in-delay" data-project="2">
-                    <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
-                        <img src="Fotos/Proyecto 02/PARTE 2_00001.jpg" alt="VIVIENDA MULTIFAMILIAR Iñaquito" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                            <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">VIVIENDA MULTIFAMILIAR Iñaquito</h3>
-                    <p class="text-gray-600">Diseño basado en composición de planos y directrices de contexto</p>
-                </div>
-
-                <!-- Proyecto 3 -->
-                <div class="group cursor-pointer animate-fade-in-delay-2" data-project="3">
-                    <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
-                        <img src="Fotos/Proyecto 03/PARTE 3_00001.jpg" alt="VIVIENDA UNIFAMILIAR-RAUMPLAN Mindo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                            <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">VIVIENDA UNIFAMILIAR-RAUMPLAN Mindo</h3>
-                    <p class="text-gray-600">Transformación de la Casa Pitaya con juego de alturas</p>
-                </div>
-
-                <!-- Proyecto 4 -->
-                <div class="group cursor-pointer animate-fade-in" data-project="4">
-                    <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
-                        <img src="Fotos/Proyecto 04/PARTE 4_00001.jpg" alt="CENTRO DE SALUD MATERNO INFANTIL Nayón" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                            <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">CENTRO DE SALUD MATERNO INFANTIL Nayón</h3>
-                    <p class="text-gray-600">Proyecto basado en el concepto de tensión entre masas</p>
-                </div>
-
-                <!-- Proyecto 5 -->
-                <div class="group cursor-pointer animate-fade-in-delay" data-project="5">
-                    <div class="relative overflow-hidden rounded-2xl h-80 bg-rose-100 mb-4 shadow-lg">
-                        <img src="Fotos/Proyecto 05/PARTE 5pdf_00001.jpg" alt="VIVIENDA UNIFAMILIAR - PLANTA LIBRE Mindo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
-                            <button class="bg-rose-400 text-white px-6 py-3 rounded-lg opacity-0 group-hover:opacity-100 transition transform group-hover:scale-100 scale-90">
-                                Ver Detalles
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">VIVIENDA UNIFAMILIAR - PLANTA LIBRE Mindo</h3>
-                    <p class="text-gray-600">Casa Pitaya transformada con concepto de Planta Libre</p>
-                </div>
+            <div class="grid md:grid-cols-3 gap-8" id="projectsGrid">
+                <!-- Los proyectos se cargarán dinámicamente con JavaScript -->
             </div>
         </div>
     </section>
@@ -541,21 +473,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Corregir las rutas de las imágenes después de que el DOM esté cargado
-        // pero con un pequeño delay para evitar conflictos
-        if (window.BASE_PATH) {
-            setTimeout(function() {
-                const images = document.querySelectorAll('img[src^="Fotos/"]');
-                images.forEach(img => {
-                    const originalSrc = img.src;
-                    // Solo corregir si no ya tiene el BASE_PATH
-                    if (!originalSrc.includes(window.BASE_PATH)) {
-                        img.src = window.BASE_PATH + '/' + originalSrc;
-                    }
-                });
-            }, 100);
-        }
-    </script>
 </body>
 </html>
